@@ -5,4 +5,4 @@ class WeatherMap():
     txt_search_city = "//input[@id='searchBox']"
     chk_search_city = "//input[@id='Bengaluru' and @type='checkbox']"
     lbl_degree_temp_on_map = "//div[@title='Bengaluru']//span[@class='tempRedText']"
-# lbl_temp_popup = "Temp in Degrees: 26"
+    # lbl_temp_popup = "Temp in Degrees: 26"

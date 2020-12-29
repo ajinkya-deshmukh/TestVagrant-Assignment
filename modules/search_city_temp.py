@@ -2,6 +2,7 @@ from selenium import webdriver
 import pytest
 from common.object_repository.ndtv_home import NDTVHome
 from common.util.constants import Constants
+from common.util.common_methods import CommonMethods
 
 @pytest.mark.smokeTestDebug
 @pytest.fixture
@@ -18,18 +19,18 @@ def test_pyfixtureInit():
     print("Initiating Tear Down")
     #driver.quit()
 
-def test_search_city_temperature(test_pyfixtureInit):
-
-    ndtv_obj_repo = NDTVHome()
+def test_verify_weather_map(test_pyfixtureInit):
     print("Search City Temperature Test Started")
-    driver.get(con.NDTV_url)
 
-    btn_latest = driver.find_element_by_xpath(ndtv_obj_repo.link_latest)
-    btn_latest.click()
+    common_methods = CommonMethods()
+    common_methods.test_navigate_to_weather_map()
 
-    link_section = driver.find_element_by_xpath(ndtv_obj_repo.link_latest)
-    link_section.click()
+    # Verify elements on the weather map
 
-    link_weather = driver.find_element_by_xpath(ndtv_obj_repo.link_weather)
-    link_weather.click()
+
+
+
+
+
+
 
