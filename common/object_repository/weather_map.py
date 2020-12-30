@@ -1,6 +1,6 @@
 from config import Config
 
-class WeatherMap():
+class WeatherMap:
 
     config = Config
 
@@ -9,6 +9,5 @@ class WeatherMap():
     txt_search_city = "//input[@id='searchBox']"
 
     # Parameterized elements based on city name given in .env
-
     chk_search_city = f"//input[@id='{config.city_name}' and @type='checkbox']"
     lbl_degree_temp_on_map = f"//div[@title='{config.city_name}']//span[@class='tempRedText']"

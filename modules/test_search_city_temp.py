@@ -10,7 +10,7 @@ from common.services.fetch_temperature import TemperatureService
 from common.object_repository.weather_map import WeatherMap
 from config import Config
 
-@pytest.mark.smokeTestDebug
+
 @pytest.fixture
 def test_pyfixtureInit():
     global driver
@@ -20,11 +20,11 @@ def test_pyfixtureInit():
     con = Constants()
     url = con.NDTV_url
     #change this driver.get later
-    driver.get("https://social.ndtv.com/static/Weather/report/")
+    driver.get(url)
     driver.maximize_window()
     yield
     print("Initiating Tear Down")
-    #driver.quit()
+    driver.quit()
 
 def test_verify_weather_map(test_pyfixtureInit):
     print("Search City Temperature Test Started")
@@ -34,19 +34,11 @@ def test_verify_weather_map(test_pyfixtureInit):
     ndtv_obj_repo = NDTVHome()
     weather_map = WeatherMap()
 
-    # 3 lines to be uncommented for test current test purpose
-
-   # WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ndtv_obj_repo.btn_accept_alert)))
-
-   # driver.find_element_by_xpath(ndtv_obj_repo.btn_accept_alert).click()
-   # common_methods.test_navigate_to_weather_map(driver)
-
-    # This is a bypass and should be removed
-
-    # driver.get("https://social.ndtv.com/static/Weather/report/")
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ndtv_obj_repo.btn_accept_alert)))
+    driver.find_element_by_xpath(ndtv_obj_repo.btn_accept_alert).click()
+    common_methods.test_navigate_to_weather_map(driver)
 
     # Verify elements on the weather map
-
     common_methods.function_is_present(driver, weather_map.img_weather_logo, "Weather Map Logo")
     common_methods.function_is_present(driver, weather_map.lbl_pin_city, "Pin City Label")
     common_methods.function_is_present(driver, weather_map.txt_search_city, "Search Text field")
