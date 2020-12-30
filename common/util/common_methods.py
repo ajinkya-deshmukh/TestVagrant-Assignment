@@ -8,9 +8,7 @@ import time
 from common.custom_exceptions.temp_range_error import TempRangeError, TempInRange, TempOutOfRange
 
 
-class CommonMethods():
-
-
+class CommonMethods:
 
     def test_navigate_to_weather_map(self, driver):
 
@@ -27,10 +25,10 @@ class CommonMethods():
         link_weather = driver.find_element_by_xpath(ndtv_obj_repo.link_weather)
         link_weather.click()
 
-    def function_is_present(self, driver, element, elementName):
+    def function_is_present(self, driver, element, element_name):
         obj_element = driver.find_element_by_xpath(element)
         self.function_highlight_element(obj_element)
-        print(elementName + " is Present")
+        print(element_name + " is Present")
 
     def function_highlight_element(self, element):
         """Highlights (blinks) a Selenium Webdriver element"""
@@ -46,6 +44,7 @@ class CommonMethods():
     def function_compare_temperature(self, ui_temp, api_temp):
         config = Config()
         temp_range_allowed = float(config.range_variation_allowed)
+        ui_temp = 15
         temp_difference = float(ui_temp) - float(api_temp)
         try:
             if temp_difference <= temp_range_allowed:

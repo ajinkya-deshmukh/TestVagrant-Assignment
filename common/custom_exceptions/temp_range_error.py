@@ -1,6 +1,7 @@
 class TempRangeError(Exception):
     pass
 
+
 class TempInRange(TempRangeError):
     """Raised when the temperature is within the specified range"""
     pass
