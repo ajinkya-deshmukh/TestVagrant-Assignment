@@ -14,8 +14,6 @@ from config import Config
 @pytest.fixture
 def test_pyfixtureInit():
     global driver
-    global con
-    global URL
     driver = webdriver.Chrome()
     con = Constants()
     url = con.NDTV_url
