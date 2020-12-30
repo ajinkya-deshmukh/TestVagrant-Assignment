@@ -57,15 +57,15 @@ def test_verify_weather_map(test_pyfixtureInit):
     is_checked = driver.find_element_by_xpath(weather_map.chk_search_city).is_selected()
     if not is_checked:
         driver.find_element_by_xpath(weather_map.chk_search_city).click()
+
     WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, weather_map.lbl_degree_temp_on_map)))
+    driver.find_element_by_xpath(weather_map.lbl_degree_temp_on_map).click()
 
     # Fetch city temp from map
-
     ui_map_temp = driver.find_element_by_xpath(weather_map.lbl_degree_temp_on_map).text
     ui_map_temp = ui_map_temp.strip("℃")
 
     # Compare temperature from weather map UI and from API
-
     common_methods.function_compare_temperature(ui_map_temp, temp_service.function_get_city_temp())
 
 

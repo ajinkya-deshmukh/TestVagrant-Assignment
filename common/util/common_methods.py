@@ -1,11 +1,9 @@
-from selenium import webdriver
 import pytest
 from common.object_repository.ndtv_home import NDTVHome
 from common.util.constants import Constants
-from common.services.fetch_temperature import TemperatureService
 from config import Config
 import time
-from common.custom_exceptions.temp_range_error import TempRangeError, TempInRange, TempOutOfRange
+from common.custom_exceptions.temp_range_error import TempOutOfRange
 
 
 class CommonMethods:
@@ -31,7 +29,7 @@ class CommonMethods:
         print(element_name + " is Present")
 
     def function_highlight_element(self, element):
-        """Highlights (blinks) a Selenium Webdriver element"""
+        # Highlights (blinks) a Selenium Webdriver element
         driver = element._parent
 
         def apply_style(s):
