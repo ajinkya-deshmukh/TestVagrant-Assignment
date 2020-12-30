@@ -31,4 +31,4 @@ At the same time the same city temperautre is fetched using the OpenWeather API 
 
 ### Authors
 
-* **Ajinkya Deshmukh** - (https://github.com/ajinkya-deshmukh/IncubyteAssignment)
+* **Ajinkya Deshmukh** - (https://github.com/ajinkya-deshmukh/TestVagrant-Assignment)
