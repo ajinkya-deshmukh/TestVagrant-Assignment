@@ -12,7 +12,7 @@ Run the requirements.txt to install all the dependencies
 
 Specify the City Name & The temperature range variation acceptable in .env file (Have put these aprameters in .env file to reduce hardcoding of these dynamic values)
 
-Run the assignment using "pytest modules/"
+Run the assignment using "pytest -rA modules/"
 
 
 ### Break down into end to end tests
