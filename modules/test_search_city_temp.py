@@ -23,7 +23,7 @@ def test_pyfixtureInit():
     driver.maximize_window()
     yield
     print("Initiating Tear Down")
-    #driver.quit()
+    driver.quit()
 
 def test_verify_weather_map(test_pyfixtureInit):
     print("Search City Temperature Test Started")
@@ -59,12 +59,5 @@ def test_verify_weather_map(test_pyfixtureInit):
 
     # Compare temperature from weather map UI and from API
     common_methods.function_compare_temperature(ui_map_temp, temp_service.function_get_city_temp())
-
-
-
-
-
-
-
 
 
