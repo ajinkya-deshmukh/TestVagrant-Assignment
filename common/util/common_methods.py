@@ -12,7 +12,7 @@ class CommonMethods:
 
         ndtv_obj_repo = NDTVHome()
         con = Constants()
-        driver.get(con.NDTV_url)
+        #driver.get(con.NDTV_url)
 
         btn_latest = driver.find_element_by_xpath(ndtv_obj_repo.link_latest)
         btn_latest.click()
@@ -45,9 +45,15 @@ class CommonMethods:
         temp_difference = float(ui_temp) - float(api_temp)
         try:
             if abs(temp_difference) <= temp_range_allowed and abs(temp_difference) >= 0:
-                print("The temperature matches")
+                print("The temperature is in specified range")
+                print("Map UI Temp = " + ui_temp)
+                print("API Temp = " + api_temp)
+                print("Specified range = " + temp_range_allowed)
             else:
-                print("The temperature does not match")
+                print("The temperature is not in specified not match")
+                print("Map UI Temp = " + ui_temp)
+                print("API Temp = " + api_temp)
+                print("Specified range = " + temp_range_allowed)
                 raise TempOutOfRange
         except TempOutOfRange as error:
             print('TempOutOfRange Exception occurred: ', error.msg)

@@ -19,12 +19,11 @@ def test_pyfixtureInit():
     driver = webdriver.Chrome()
     con = Constants()
     url = con.NDTV_url
-    #change this driver.get later
     driver.get(url)
     driver.maximize_window()
     yield
     print("Initiating Tear Down")
-    driver.quit()
+    #driver.quit()
 
 def test_verify_weather_map(test_pyfixtureInit):
     print("Search City Temperature Test Started")
@@ -39,6 +38,7 @@ def test_verify_weather_map(test_pyfixtureInit):
     common_methods.test_navigate_to_weather_map(driver)
 
     # Verify elements on the weather map
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, weather_map.img_weather_logo)))
     common_methods.function_is_present(driver, weather_map.img_weather_logo, "Weather Map Logo")
     common_methods.function_is_present(driver, weather_map.lbl_pin_city, "Pin City Label")
     common_methods.function_is_present(driver, weather_map.txt_search_city, "Search Text field")
