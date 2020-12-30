@@ -43,15 +43,18 @@ class CommonMethods:
         try:
             if abs(temp_difference) <= temp_range_allowed and abs(temp_difference) >= 0:
                 print("The temperature is in specified range")
-                print("Map UI Temp = " + ui_temp)
-                print("API Temp = " + api_temp)
-                print("Specified range = " + str(temp_range_allowed))
+                self.function_print_all_temp(ui_temp, api_temp)
             else:
                 print("The temperature is not in specified not match")
-                print("Map UI Temp = " + ui_temp)
-                print("API Temp = " + api_temp)
-                print("Specified range = " + str(temp_range_allowed))
+                self.function_print_all_temp(ui_temp, api_temp)
                 raise TempOutOfRange
         except TempOutOfRange as error:
             print('TempOutOfRange Exception occurred: ', error.msg)
             pytest.fail(error.msg)
+
+    def function_print_all_temp(self, ui_temp, api_temp):
+        config = Config()
+        temp_range_allowed = config.range_variation_allowed
+        print("Map UI Temp = " + ui_temp)
+        print("API Temp = " + api_temp)
+        print("Specified range = " + str(temp_range_allowed))
