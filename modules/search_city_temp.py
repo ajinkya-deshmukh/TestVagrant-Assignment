@@ -8,6 +8,7 @@ from common.util.constants import Constants
 from common.util.common_methods import CommonMethods
 from common.services.fetch_temperature import TemperatureService
 from common.object_repository.weather_map import WeatherMap
+from config import Config
 
 @pytest.mark.smokeTestDebug
 @pytest.fixture
@@ -44,13 +45,25 @@ def test_verify_weather_map(test_pyfixtureInit):
 
     # This is a bypass and should be removed
 
-   # driver.get("https://social.ndtv.com/static/Weather/report/")
+    # driver.get("https://social.ndtv.com/static/Weather/report/")
 
     # Verify elements on the weather map
 
-    temp_service.function_get_city_temp()
+    common_methods.function_is_present(driver, weather_map.img_weather_logo, "Weather Map Logo")
+    common_methods.function_is_present(driver, weather_map.lbl_pin_city, "Pin City Label")
+    common_methods.function_is_present(driver, weather_map.txt_search_city, "Search Text field")
 
-    txt_search = driver.find_element_by_xpath(weather_map.img_weather_logo)
+    config = Config
+    driver.find_element_by_xpath(weather_map.txt_search_city).send_keys(config.city_name)
+    is_checked = driver.find_element_by_xpath(weather_map.chk_search_city).is_selected()
+    if not is_checked:
+        driver.find_element_by_xpath(weather_map.chk_search_city).click()
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, weather_map.lbl_degree_temp_on_map)))
+    ui_map_temp = driver.find_element_by_xpath(weather_map.lbl_degree_temp_on_map).text
+    ui_map_temp = ui_map_temp.strip("℃")
+    common_methods.function_compare_temperature(ui_map_temp, temp_service.function_get_city_temp())
+
+
 
 
 
