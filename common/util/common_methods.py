@@ -44,13 +44,12 @@ class CommonMethods:
     def function_compare_temperature(self, ui_temp, api_temp):
         config = Config()
         temp_range_allowed = float(config.range_variation_allowed)
-        ui_temp = 15
         temp_difference = float(ui_temp) - float(api_temp)
         try:
-            if temp_difference <= temp_range_allowed:
+            if abs(temp_difference) <= temp_range_allowed and abs(temp_difference) >= 0:
                 print("The temperature matches")
             else:
-                print("The does not match temperature matches")
+                print("The temperature does not match")
                 raise TempOutOfRange
         except TempOutOfRange as error:
             print('TempOutOfRange Exception occurred: ', error.msg)
