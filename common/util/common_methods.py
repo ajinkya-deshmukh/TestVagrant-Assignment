@@ -45,12 +45,12 @@ class CommonMethods:
                 print("The temperature is in specified range")
                 print("Map UI Temp = " + ui_temp)
                 print("API Temp = " + api_temp)
-                print("Specified range = " + temp_range_allowed)
+                print("Specified range = " + str(temp_range_allowed))
             else:
                 print("The temperature is not in specified not match")
                 print("Map UI Temp = " + ui_temp)
                 print("API Temp = " + api_temp)
-                print("Specified range = " + temp_range_allowed)
+                print("Specified range = " + str(temp_range_allowed))
                 raise TempOutOfRange
         except TempOutOfRange as error:
             print('TempOutOfRange Exception occurred: ', error.msg)
