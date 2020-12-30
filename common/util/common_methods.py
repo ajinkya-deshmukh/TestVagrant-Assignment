@@ -1,6 +1,5 @@
 import pytest
 from common.object_repository.ndtv_home import NDTVHome
-from common.util.constants import Constants
 from config import Config
 import time
 from common.custom_exceptions.temp_range_error import TempOutOfRange
@@ -11,8 +10,6 @@ class CommonMethods:
     def test_navigate_to_weather_map(self, driver):
 
         ndtv_obj_repo = NDTVHome()
-        con = Constants()
-        #driver.get(con.NDTV_url)
 
         btn_latest = driver.find_element_by_xpath(ndtv_obj_repo.link_latest)
         btn_latest.click()
