@@ -26,7 +26,7 @@ At the same time the same city temperautre is fetched using the OpenWeather API 
 
 * Python
 * Selenium
-* Pytest-check
+* PyTest
 
 
 ### Authors
